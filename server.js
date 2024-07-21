@@ -21,6 +21,14 @@ db.once('open', () => {
 
 app.use('/api/charts', chartRoutes);
 
+app.get('/', async (req, res) => {
+  try {
+    res.json({ message: 'Welcome to the NDRR Chart API' });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
